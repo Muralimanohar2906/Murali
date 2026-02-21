@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.9;
+  }
+}
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+  
+  --animate-spin-slow: spin-slow 10s linear infinite;
+  --animate-gradient-spin: gradient-spin 3s ease infinite;
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes gradient-spin {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --accent-purple: 263 90% 66%;
+  --accent-blue: 221 83% 53%;
+  --accent-indigo: 239 84% 67%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white selection:bg-purple-500/30 selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-3xl transition-all duration-500;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card:hover {
+    @apply bg-white/[0.06] border-white/[0.15] -translate-y-2;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 animate-gradient-spin;
+    background-size: 200% 200%;
+  }
+
+  .mesh-bg {
+    @apply absolute inset-0 -z-10 opacity-20;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/5 rounded-full border-4 border-black hover:bg-white/10 transition-colors;
+}
+
+/* Text Selection */
+::selection {
+  @apply bg-purple-500/20 text-purple-300;
+}
