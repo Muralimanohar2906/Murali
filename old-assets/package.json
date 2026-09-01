@@ -1,0 +1,12 @@
+{
+  "name": "murali-portfolio",
+  "version": "1.0.0",
+  "description": "Murali Manohar G - AI/ML Engineer Portfolio",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel"
+  },
+  "keywords": ["portfolio", "ai", "ml", "engineer"],
+  "author": "Murali Manohar G",
+  "license": "MIT"
+}
