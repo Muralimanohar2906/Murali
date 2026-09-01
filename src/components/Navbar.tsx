@@ -1,97 +1,81 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Cpu, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 const NavLinks = [
-  { name: 'Home', href: '#' },
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'py-4 bg-black/80 backdrop-blur-2xl border-b border-white/[0.08]' : 'py-8 bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-center">
-        {/* Desktop Menu - Centered */}
-        <div className="hidden lg:flex items-center gap-10">
-          <div className="flex items-center gap-8 px-6 py-2.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
-            {NavLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-[11px] uppercase tracking-[0.2em] font-black text-white/40 hover:text-white transition-all relative group"
-              >
-                {link.name}
-                <motion.span 
-                  className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-500 rounded-full group-hover:w-full transition-all duration-300" 
-                />
-              </Link>
-            ))}
-          </div>
+    <div className="fixed top-4 left-4 right-4 z-50">
+      <nav className="max-w-6xl mx-auto card pill bg-cream/90 backdrop-blur-md flex items-center justify-between px-5 py-3">
+        <Link href="#" className="flex items-center gap-2 font-display font-extrabold text-ink text-sm">
+          <span className="w-8 h-8 rounded-full bg-ink text-cream flex items-center justify-center text-xs">MG</span>
+          <span className="hidden sm:inline">Murali Manohar</span>
+        </Link>
+
+        <div className="hidden lg:flex items-center gap-8">
+          {NavLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-ink-soft hover:text-ink transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Toggle */}
+        <Link href="#contact" className="hidden lg:inline-flex btn-dark">
+          Let&apos;s talk <ArrowUpRight className="w-4 h-4" />
+        </Link>
+
         <button
-          className="lg:hidden p-3 rounded-2xl bg-white/5 border border-white/10 text-white ml-auto cursor-pointer"
+          className="lg:hidden p-2.5 rounded-full border border-ink/15 text-ink cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-3xl border-b border-white/[0.08] p-8 lg:hidden overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="lg:hidden max-w-6xl mx-auto card mt-2 p-6"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-5">
               {NavLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-black text-white/50 hover:text-white transition-colors"
+                  className="text-lg font-semibold text-ink"
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-6 border-t border-white/5 flex gap-6">
-                <Link href="mailto:muralimanohargedda@gmail.com" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-white">
-                  <Mail className="w-4 h-4" /> Email Me
-                </Link>
-              </div>
+              <Link href="#contact" onClick={() => setIsOpen(false)} className="btn-dark w-fit">
+                Let&apos;s talk <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </div>
   );
 };
 

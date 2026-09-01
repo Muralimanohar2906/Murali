@@ -22,17 +22,17 @@ const CustomCursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/50 pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#1b1912]/30 pointer-events-none z-[9999] hidden md:block"
         animate={{
           x: position.x - 16,
           y: position.y - 16,
           scale: isPointer ? 1.5 : 1,
-          backgroundColor: isPointer ? 'rgba(139, 92, 246, 0.1)' : 'rgba(139, 92, 246, 0)',
+          backgroundColor: isPointer ? 'rgba(181, 80, 46, 0.12)' : 'rgba(181, 80, 46, 0)',
         }}
         transition={{ type: 'spring', damping: 30, stiffness: 200, mass: 0.5 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#1b1912] pointer-events-none z-[9999] hidden md:block"
         animate={{
           x: position.x - 3,
           y: position.y - 3,

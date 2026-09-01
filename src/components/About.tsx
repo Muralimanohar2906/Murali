@@ -2,84 +2,101 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Target, Users, Zap, Brain, Code, Cpu } from 'lucide-react';
 
 const stats = [
-  { label: 'AI Projects', value: '15+', icon: <Rocket className="w-5 h-5 text-purple-400" /> },
-  { label: 'Work Exp', value: '3+ Yrs', icon: <Users className="w-5 h-5 text-blue-400" /> },
+  { label: 'Shipped Projects', value: '8' },
+  { label: 'Years, Ops & AI', value: '3+' },
+];
+
+const stops = [
+  { role: 'Supervisor', place: 'Delivery Hub', date: '2021' },
+  { role: 'Team Lead', place: 'Delivery Hub', date: '2022' },
+  { role: 'IT Support', place: 'Artech Solutions', date: '2025' },
+  { role: 'AI/ML Engineer', place: 'Artech Solutions', date: '2026', current: true },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-32 px-6 relative overflow-hidden">
-      <div className="mesh-bg opacity-5" />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start min-h-[70vh]">
-        
-        {/* Visual Storytelling */}
+    <section id="about" className="py-28 px-6 relative">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative group w-full"
+          className="card overflow-hidden order-2 lg:order-1"
         >
-          <div className="relative aspect-square md:aspect-[4/4.8] rounded-[3rem] bg-white/[0.02] border border-white/[0.08] overflow-hidden group-hover:border-white/20 transition-all duration-700 shadow-2xl">
-             <div className="absolute inset-0">
-                <img 
-                  src="/portfolio-main.png" 
-                  alt="Murali Portfolio" 
-                  className="w-full h-full object-cover object-top transition-transform duration-[3s] group-hover:scale-105" 
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072';
-                  }}
-                />
-             </div>
+          <div className="px-7 pt-7">
+            <div className="eyebrow mb-2">Career path</div>
+            <p className="text-ink-soft text-sm">Four stops, one habit: get the right thing to the right place.</p>
+          </div>
+
+          <div className="relative px-7 py-8">
+            <div className="absolute left-[33px] top-8 bottom-8 w-px bg-ink/10" />
+            <div className="space-y-6">
+              {stops.map((stop) => (
+                <div key={stop.role} className="relative pl-9 flex items-center justify-between gap-3">
+                  <span
+                    className={`absolute left-0 w-4 h-4 rounded-full border-2 ${
+                      stop.current ? 'border-clay bg-clay' : 'border-ink-soft/40 bg-cream'
+                    }`}
+                  />
+                  <div>
+                    <div className={`text-sm font-semibold ${stop.current ? 'text-clay' : 'text-ink'}`}>{stop.role}</div>
+                    <div className="text-xs text-ink-soft">{stop.place}</div>
+                  </div>
+                  <span className="eyebrow whitespace-nowrap">{stop.date}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 border-t border-ink/10">
+            {stats.map((stat) => (
+              <div key={stat.label} className="p-7 first:border-r border-ink/10 first:border-dashed">
+                <div className="font-display font-extrabold text-4xl text-ink">{stat.value}</div>
+                <div className="eyebrow mt-1">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        <div className="lg:pt-4">
+        <div className="order-1 lg:order-2 lg:pt-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="text-sm font-bold uppercase tracking-[0.4em] text-purple-500 mb-6 flex items-center gap-4">
-               <div className="w-12 h-px bg-purple-500/30" />
-               About Me
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-10 tracking-tighter leading-[0.9]">
-              Solving Problems <br />
-              <span className="gradient-text italic">with Intelligence.</span>
+            <div className="eyebrow mb-5">About</div>
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink mb-7 leading-tight">
+              Same discipline.<br /><span className="accent">Different tools.</span>
             </h2>
           </motion.div>
-          
-          <div className="space-y-6 mb-12">
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed font-medium italic">
-              &quot;I bridge the gap between complex mathematical research and scalable, production-ready software systems.&quot;
+
+          <div className="space-y-5 text-ink-soft text-base leading-relaxed mb-9">
+            <p>
+              For two years I ran first- and last-mile delivery for an Amazon hub in
+              Rajahmundry &mdash; routing 50+ associates, balancing load, keeping SLAs
+              at 100%. The job came down to one thing: getting the right thing to the
+              right place, on time, without babysitting every step.
             </p>
-            <p className="text-white/55 text-base leading-relaxed">
-              Based in Hyderabad, I&#39;ve transitioned from managing large-scale operations at Amazon Hubs to engineering
-              next-generation AI systems. I specialize in Natural Language Processing, Computer Vision, and the growing
-              landscape of Generative AI.
+            <p>
+              That&apos;s what I build now, just with models instead of vans. I design
+              NLP pipelines, RAG systems, and automation that move information where
+              it&apos;s needed &mdash; reliably, without a human in the loop for every
+              request. Based in Hyderabad, working across NLP, computer vision, and
+              applied GenAI.
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all group overflow-hidden relative"
-              >
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                   {stat.icon}
-                </div>
-                <div className="text-3xl font-black mb-1">{stat.value}</div>
-                <div className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">{stat.label}</div>
-              </motion.div>
-            ))}
+
+          <div className="card p-5 flex items-center gap-4 flex-wrap">
+            <div className="eyebrow whitespace-nowrap">Path</div>
+            <div className="flex items-center gap-3 text-sm font-medium text-ink flex-wrap">
+              <span>Delivery Ops</span>
+              <span className="text-clay">&rarr;</span>
+              <span>IT Support</span>
+              <span className="text-clay">&rarr;</span>
+              <span className="text-pine font-semibold">AI/ML Engineering</span>
+            </div>
           </div>
         </div>
       </div>

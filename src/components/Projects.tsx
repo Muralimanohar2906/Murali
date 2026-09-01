@@ -2,82 +2,77 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Cpu, BarChart3, Mail, Bot, Search, GraduationCap, FileText, Activity, Mic, Users, X } from 'lucide-react';
+import { Github, ArrowUpRight, Bot, GraduationCap, FileText, Activity, Mic, Users, X, BarChart3, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 const projects = [
   {
     id: 'meetingvoz',
     title: 'MeetingVoz',
-    category: 'AI / MEETING INTELLIGENCE',
+    category: 'AI / Meeting Intelligence',
     description: 'Multilingual AI meeting intelligence platform built to understand conversations across Indian languages and English.',
     tags: ['Speech AI', 'NLP', 'LLM', 'Multilingual'],
-    icon: <Mic className="w-6 h-6" />,
-    color: 'from-cyan-500 to-teal-500',
+    icon: <Mic className="w-4 h-4" />,
     github: 'https://github.com/artechsolution-arts/meeting_intelligence',
     demo: 'https://www.meetvoz.com/',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070',
     problem: 'Most AI meeting assistants are built around English conversations. Real-world meetings in India are different — participants naturally switch between English, Hindi, Telugu, Tamil, and other regional languages, sometimes within the same sentence.',
-    solution: 'MeetingVoz is designed to understand multilingual conversations and preserve the language used during the meeting, generating transcripts, summaries, and action items across 13 Indian languages plus English.',
-    impact: 'Enables teams to capture and understand multilingual meetings more accurately, while preserving the natural language used by participants.',
+    solution: 'MeetingVoz understands multilingual conversations and preserves the language used during the meeting, generating transcripts, summaries, and action items across 13 Indian languages plus English.',
+    impact: 'Teams capture and understand multilingual meetings more accurately, while the natural language participants used is preserved.',
     architecture: 'Meeting Audio → Multilingual Speech-to-Text → LLM Summarization → Transcripts, Decisions & Action Items'
   },
   {
     id: 'documindai',
     title: 'DocumindAI',
-    category: 'AI / DOCUMENT INTELLIGENCE',
+    category: 'AI / Document Intelligence',
     description: 'AI-powered document intelligence platform for understanding, analyzing, and interacting with documents.',
     tags: ['AI', 'NLP', 'RAG', 'LLM'],
-    icon: <FileText className="w-6 h-6" />,
-    color: 'from-emerald-500 to-lime-500',
+    icon: <FileText className="w-4 h-4" />,
     github: 'https://github.com/Artechsolutions-arts/Documind_ai',
     demo: 'https://www.documindai.in/',
     image: 'https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=2069',
     problem: 'Working with large and complex documents often requires manually searching through pages of information, and traditional keyword search struggles to capture the context users actually need.',
-    solution: 'DocumindAI uses AI-powered document understanding so users can interact with content using natural language — asking questions and retrieving relevant information instead of manually searching.',
-    impact: 'Reduced the effort required to search and understand large documents by providing an intelligent interface for retrieving relevant information and insights.',
+    solution: 'DocumindAI lets users interact with content using natural language — asking questions and retrieving relevant information instead of manually searching.',
+    impact: 'Cuts the effort required to search and understand large documents by giving users a direct interface for retrieving relevant information and insights.',
     architecture: 'Document Upload → Text Extraction → Vector Embeddings → RAG Retrieval → LLM Answer'
   },
   {
     id: 'ar-peopliz-hrms',
     title: 'AR Peopliz HRMS',
-    category: 'HRMS / ENTERPRISE APPLICATION',
+    category: 'HRMS / Enterprise Application',
     description: 'A comprehensive Human Resource Management System designed to streamline employee management, HR operations, attendance, leave, and organizational workflows.',
-    tags: ['HRMS', 'Enterprise', 'Workforce Management', 'Business Automation'],
-    icon: <Users className="w-6 h-6" />,
-    color: 'from-slate-500 to-zinc-600',
+    tags: ['HRMS', 'Enterprise', 'Workforce', 'Automation'],
+    icon: <Users className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2073',
-    problem: 'HR operations often depend on manual processes and disconnected systems for managing employees, attendance, leave, and workforce information. This makes day-to-day HR administration more time-consuming and difficult to manage at scale.',
+    problem: 'HR operations often depend on manual processes and disconnected systems for managing employees, attendance, leave, and workforce information — slow to run and hard to see across at scale.',
     solution: 'AR Peopliz HRMS brings core HR operations into a centralized platform, giving organizations a structured way to manage employee information and streamline day-to-day HR workflows through a single system.',
-    impact: 'Centralizes core HR operations in one platform, helping organizations reduce manual effort, improve workforce visibility, and manage employee processes more efficiently.',
-    architecture: 'Employee Data → Centralized HRMS Platform → Attendance, Leave & Workflow Automation → HR Visibility & Reporting'
+    impact: 'Centralizes core HR operations in one platform, cutting manual effort and giving HR teams clearer visibility into workforce processes.',
+    architecture: 'Employee Data → Centralized HRMS Platform → Attendance, Leave & Workflow Automation → HR Reporting'
   },
   {
     id: 'rtgs-assistant',
-    title: 'RTGS AI ASSISTANT 2.0',
-    category: 'GenAI',
+    title: 'RTGS AI Assistant 2.0',
+    category: 'GenAI / Citizen Services',
     description: 'Conversational AI platform for Real Time Governance Society, handling multi-lingual citizen queries.',
     tags: ['GenAI', 'LLMs', 'RAG', 'Vector DB'],
-    icon: <Bot className="w-6 h-6" />,
-    color: 'from-blue-500 to-cyan-500',
+    icon: <Bot className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: '/ap-logo.png',
     problem: 'Citizen support teams were overwhelmed with repetitive administrative queries.',
     solution: 'Implemented a RAG-based chatbot using localized embeddings to provide instant, accurate responses.',
     impact: 'Handled 50,000+ queries in the first month with a 92% resolution rate.',
-    architecture: 'User Query → LangChain → Vector DB (Pinecone) → LLM → Multi-lingual Response'
+    architecture: 'Citizen Query → LangChain → Vector DB → LLM → Multi-lingual Response'
   },
   {
     id: 'public-pulse',
-    title: 'PUBLIC PULSE 2.0',
-    category: 'NLP',
+    title: 'Public Pulse 2.0',
+    category: 'NLP / Public Sentiment',
     description: 'Advanced sentiment analysis and public feedback monitoring system for government initiatives.',
     tags: ['NLP', 'Transformers', 'FastAPI', 'React'],
-    icon: <BarChart3 className="w-6 h-6" />,
-    color: 'from-purple-500 to-indigo-500',
+    icon: <BarChart3 className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: '/ap-logo.png',
@@ -89,11 +84,10 @@ const projects = [
   {
     id: 'smart-teacher',
     title: 'Smart Teacher',
-    category: 'Chrome Extension',
+    category: 'Chrome Extension / EdTech',
     description: 'Chrome extension transforming YouTube lectures into interactive study sessions using on-device AI.',
-    tags: ['Chrome Extension', 'On-Device AI', 'Gemini Nano', 'NLP'],
-    icon: <GraduationCap className="w-6 h-6" />,
-    color: 'from-orange-500 to-red-500',
+    tags: ['On-Device AI', 'Gemini Nano', 'NLP'],
+    icon: <GraduationCap className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=2074',
@@ -104,12 +98,11 @@ const projects = [
   },
   {
     id: 'ev-market-analysis',
-    title: 'Electric Vehicle Market Analysis',
+    title: 'EV Market Analysis',
     category: 'Data Analysis',
     description: 'Comprehensive market analysis project focused on understanding EV adoption trends in India.',
-    tags: ['Data Analysis', 'Pandas', 'Visualization', 'EDA'],
-    icon: <Activity className="w-6 h-6" />,
-    color: 'from-blue-600 to-indigo-600',
+    tags: ['Pandas', 'Visualization', 'EDA'],
+    icon: <Activity className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072',
@@ -121,11 +114,10 @@ const projects = [
   {
     id: 'mail-watch',
     title: 'MailWatch',
-    category: 'ML',
+    category: 'ML / Email Security',
     description: 'AI-powered email security system to identify and flag phishing threats using custom ML models.',
-    tags: ['ML', 'Security', 'FastAPI', 'Python'],
-    icon: <Mail className="w-6 h-6" />,
-    color: 'from-red-500 to-pink-500',
+    tags: ['ML', 'Security', 'FastAPI'],
+    icon: <Mail className="w-4 h-4" />,
     github: '#',
     demo: '#',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070',
@@ -136,93 +128,66 @@ const projects = [
   },
 ];
 
-const ProjectImage = ({ src, alt, color }: { src: string, alt: string, color: string }) => (
-  <div className="w-full h-full relative group overflow-hidden bg-white/[0.02] flex items-center justify-center p-8">
+const ProjectImage = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="w-full h-full relative group overflow-hidden bg-cream flex items-center justify-center p-6">
     <img
       src={src}
       alt={alt}
-      className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
+      className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
+      style={{ filter: 'grayscale(0.4) contrast(1.02)' }}
       onError={(e) => {
         (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072';
       }}
     />
-    <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-15 mix-blend-overlay pointer-events-none`} />
-    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
   </div>
 );
 
 const Projects = () => {
   const [selectedId, setSelectedId] = React.useState<string | null>(null);
-  const selectedProject = projects.find(p => p.id === selectedId);
+  const selectedProject = projects.find((p) => p.id === selectedId);
 
   return (
     <section id="projects" className="py-24 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.h2 
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-14">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Latest <span className="gradient-text">Projects</span>
-          </motion.h2>
-          <p className="text-white/40 max-w-xl mx-auto text-sm">
-            Interactive showcase of my recent engineering work and technical solutions.
-          </p>
+            <div className="eyebrow mb-4">Selected work &middot; {projects.length} projects</div>
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink">
+              Things I&apos;ve <span className="accent">shipped.</span>
+            </h2>
+          </motion.div>
         </div>
 
         {/* Project Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project) => (
             <motion.div
               key={project.id}
               layoutId={project.id}
-              className="group cursor-pointer rounded-3xl overflow-hidden glass-card border-white/5 relative bg-white/[0.01]"
+              onClick={() => setSelectedId(project.id)}
+              className="group cursor-pointer card overflow-hidden hover:border-ink/25 transition-colors"
             >
-              <div 
-                onClick={() => setSelectedId(project.id)}
-                className="aspect-video w-full"
-              >
-                <ProjectImage src={project.image} alt={project.title} color={project.color} />
-              </div>
-              
-              {/* Quick Actions & Info Bottom Bar */}
-              <div className="p-5 flex items-center justify-between border-t border-white/5">
-                <div onClick={() => setSelectedId(project.id)}>
-                   <h3 className="text-sm font-bold text-white/80 group-hover:text-white transition-colors">{project.title}</h3>
-                   <p className="text-[9px] text-white/30 uppercase tracking-widest">{project.category}</p>
-                </div>
-                <div className="flex gap-2">
-                   <Link
-                     href={project.github}
-                     target={project.github !== '#' ? '_blank' : undefined}
-                     rel={project.github !== '#' ? 'noopener noreferrer' : undefined}
-                     aria-label={`View ${project.title} source on GitHub`}
-                     className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:text-purple-400"
-                   >
-                      <Github className="w-3.5 h-3.5" />
-                   </Link>
-                   <Link
-                     href={project.demo}
-                     target={project.demo !== '#' ? '_blank' : undefined}
-                     rel={project.demo !== '#' ? 'noopener noreferrer' : undefined}
-                     aria-label={`Open ${project.title} live demo`}
-                     className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:text-blue-400"
-                   >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                   </Link>
-                </div>
+              <div className="aspect-video w-full">
+                <ProjectImage src={project.image} alt={project.title} />
               </div>
 
-              {/* Hover Detailed Overlay (Center Icon) */}
-              <div 
-                onClick={() => setSelectedId(project.id)}
-                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 pointer-events-none"
-              >
-                <div className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-                   <Search className="w-5 h-5 text-white" />
+              <div className="p-5 border-t border-ink/10">
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-clay">{project.icon}</span>
+                    <h3 className="text-base font-semibold text-ink group-hover:text-clay transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
+                  {project.demo !== '#' && (
+                    <span className="text-[10px] font-bold uppercase tracking-wide text-pine">Live</span>
+                  )}
                 </div>
+                <p className="text-xs text-ink-soft">{project.category}</p>
               </div>
             </motion.div>
           ))}
@@ -237,73 +202,78 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedId(null)}
-                className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[60] cursor-zoom-out"
+                className="fixed inset-0 bg-ink/60 backdrop-blur-sm z-[60] cursor-zoom-out"
               />
               <motion.div
                 layoutId={selectedId}
-                className="fixed inset-4 md:inset-20 z-[70] glass-card overflow-hidden flex flex-col lg:grid lg:grid-cols-2 pointer-events-none bg-neutral-950"
+                className="fixed inset-3 md:inset-10 lg:inset-16 z-[70] card overflow-hidden flex flex-col lg:grid lg:grid-cols-[0.9fr_1.1fr] pointer-events-none bg-cream"
               >
-                <div className="relative h-64 lg:h-full bg-white/[0.02] pointer-events-auto flex items-center justify-center p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-white/5">
-                   <img src={selectedProject.image} alt={selectedProject.title} className="max-w-full max-h-full object-contain" />
+                <div className="relative h-56 lg:h-full bg-cream-2 pointer-events-auto flex items-center justify-center p-10 lg:p-16 border-b lg:border-b-0 lg:border-r border-ink/10">
+                  <img src={selectedProject.image} alt={selectedProject.title} className="max-w-full max-h-full object-contain" style={{ filter: 'grayscale(0.4) contrast(1.02)' }} />
                 </div>
-                
-                <div className="p-6 md:p-12 flex flex-col h-full pointer-events-auto overflow-y-auto">
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="pr-12">
-                        <div className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-500 mb-2">Project Case Study</div>
-                        <h3 className="text-3xl md:text-4xl font-black tracking-tight mb-4">{selectedProject.title}</h3>
-                        <div className="flex flex-wrap gap-2">
-                           {selectedProject.tags.map(tag => (
-                             <span key={tag} className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-bold text-white/40 uppercase tracking-widest">{tag}</span>
-                           ))}
-                        </div>
+
+                <div className="p-6 md:p-10 flex flex-col h-full pointer-events-auto overflow-y-auto">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="pr-10">
+                      <div className="eyebrow mb-2">Case study</div>
+                      <h3 className="font-display font-extrabold text-3xl md:text-4xl text-ink mb-4">{selectedProject.title}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.tags.map((tag) => (
+                          <span key={tag} className="badge">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                     <button
                       onClick={() => setSelectedId(null)}
                       aria-label="Close project details"
-                      className="p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-pointer"
+                      className="p-2.5 rounded-full border border-ink/15 hover:border-ink/40 transition-colors cursor-pointer shrink-0"
                     >
-                      <X className="w-5 h-5 text-white/60" />
+                      <X className="w-4 h-4 text-ink" />
                     </button>
                   </div>
 
-                  <p className="text-white/60 text-lg mb-10 leading-relaxed italic border-l-2 border-purple-500/30 pl-6">
-                    &quot;{selectedProject.description}&quot;
+                  <p className="text-ink text-base mb-8 leading-relaxed border-l-2 border-clay/50 pl-5">
+                    {selectedProject.description}
                   </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+                  <div className="space-y-6 mb-8">
                     <div>
-                      <div className="text-[10px] uppercase tracking-widest text-purple-400 font-bold mb-3 flex items-center gap-2">
-                        <div className="w-4 h-px bg-purple-400/30" />
-                        The Problem
-                      </div>
-                      <p className="text-white/40 text-xs leading-relaxed">{selectedProject.problem}</p>
+                      <div className="eyebrow eyebrow-clay mb-2">The Problem</div>
+                      <p className="text-ink-soft text-sm leading-relaxed">{selectedProject.problem}</p>
                     </div>
                     <div>
-                      <div className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold mb-3 flex items-center gap-2">
-                        <div className="w-4 h-px bg-emerald-400/30" />
-                        Key Impact
-                      </div>
-                      <p className="text-white/40 text-xs leading-relaxed">{selectedProject.impact}</p>
+                      <div className="eyebrow eyebrow-pine mb-2">The Approach</div>
+                      <p className="text-ink-soft text-sm leading-relaxed">{selectedProject.solution}</p>
+                    </div>
+                    <div>
+                      <div className="eyebrow mb-2">The Impact</div>
+                      <p className="text-ink-soft text-sm leading-relaxed">{selectedProject.impact}</p>
                     </div>
                   </div>
 
-                  <div className="mt-auto flex flex-col sm:flex-row gap-4">
+                  <div className="card p-4 mb-8">
+                    <div className="eyebrow mb-2">How it&apos;s built</div>
+                    <p className="text-xs text-ink-soft leading-relaxed break-words">{selectedProject.architecture}</p>
+                  </div>
+
+                  <div className="mt-auto flex flex-col sm:flex-row gap-3">
                     <Link
                       href={selectedProject.github}
                       target={selectedProject.github !== '#' ? '_blank' : undefined}
                       rel={selectedProject.github !== '#' ? 'noopener noreferrer' : undefined}
-                      className="flex-1 py-4 bg-white text-black text-center font-bold text-[10px] uppercase tracking-widest rounded-2xl hover:bg-purple-50 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 btn-dark justify-center"
                     >
-                       <Github className="w-4 h-4" /> View GitHub Repository
+                      <Github className="w-4 h-4" /> Source
                     </Link>
                     <Link
                       href={selectedProject.demo}
                       target={selectedProject.demo !== '#' ? '_blank' : undefined}
                       rel={selectedProject.demo !== '#' ? 'noopener noreferrer' : undefined}
-                      className="flex-1 py-4 bg-white/5 border border-white/10 text-white text-center font-bold text-[10px] uppercase tracking-widest rounded-2xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 btn-outline justify-center"
                     >
-                       <ExternalLink className="w-4 h-4" /> Live Demonstration
+                      <ArrowUpRight className="w-4 h-4" /> Live Demo
                     </Link>
                   </div>
                 </div>

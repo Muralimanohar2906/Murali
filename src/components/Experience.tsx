@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 const experiences = [
   {
@@ -13,7 +13,7 @@ const experiences = [
     details: [
       'Developing and deploying Large Language Models (LLMs) and RAG pipelines for enterprise applications.',
       'Fine-tuning vision transformers and convolutional neural networks for automated quality inspection.',
-      'Optimizing model inference and latency using Quantization and ONNX acceleration.',
+      'Optimizing model inference and latency using quantization and ONNX acceleration.',
     ],
   },
   {
@@ -55,62 +55,62 @@ const Experience = () => {
   return (
     <section id="experience" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-20">
-          <motion.h2 
+        <div className="mb-16">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Professional <span className="gradient-text">Journey</span>
-          </motion.h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
+            <div className="eyebrow mb-4">Experience</div>
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink">
+              The <span className="accent">journey so far.</span>
+            </h2>
+          </motion.div>
         </div>
 
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2 hidden md:block" />
+          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-ink/10" />
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {experiences.map((exp, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
-                  idx % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="relative pl-11"
               >
-                {/* Timeline Node */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-black -translate-x-1/2 hidden md:block" />
-                
-                <div className="w-full md:w-1/2 space-y-4">
-                  <div className="glass-card p-8 hover:border-purple-500/50 transition-all">
-                    <div className="flex flex-col gap-2 mb-6">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-purple-400 px-2 py-1 bg-purple-500/10 rounded-md">
-                          {exp.date}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-4 text-sm text-white/40">
-                        <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" /> {exp.company}</span>
-                        <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {exp.location}</span>
-                      </div>
-                    </div>
-                    <ul className="space-y-3">
-                      {exp.details.map((detail, i) => (
-                        <li key={i} className="text-sm text-white/50 flex gap-3 italic">
-                          <span className="text-purple-500 mt-1 flex-shrink-0">▹</span>
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div
+                  className={`absolute left-0 top-1.5 w-[31px] h-[31px] rounded-full flex items-center justify-center border ${
+                    idx === 0 ? 'border-clay bg-clay/10' : 'border-ink/20 bg-cream'
+                  }`}
+                >
+                  <span className={`text-[10px] font-bold ${idx === 0 ? 'text-clay' : 'text-ink-soft'}`}>
+                    {String(experiences.length - idx).padStart(2, '0')}
+                  </span>
                 </div>
-                <div className="hidden md:block w-1/2" />
+
+                <div className="card p-6 hover:border-ink/25 transition-colors">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <h3 className="text-lg font-semibold text-ink">{exp.role}</h3>
+                    <span className="eyebrow eyebrow-clay">{exp.date}</span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-ink-soft mb-4">
+                    <span>{exp.company}</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" /> {exp.location}
+                    </span>
+                  </div>
+                  <ul className="space-y-2.5">
+                    {exp.details.map((detail, i) => (
+                      <li key={i} className="text-sm text-ink-soft flex gap-3">
+                        <span className="text-clay mt-1 shrink-0">&rarr;</span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>

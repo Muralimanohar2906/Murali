@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 
-const inter = Inter({ 
+const display = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["600", "700", "800"],
+  variable: "--font-display-raw",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const body = Inter({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+  variable: "--font-body-raw",
+});
+
+const accent = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["italic"],
+  variable: "--font-accent-raw",
 });
 
 export const metadata: Metadata = {
   title: "Murali Manohar G | AI/ML Engineer",
-  description: "Innovative portfolio of Murali Manohar G, an AI/ML Engineer specializing in building intelligent, scalable systems.",
-  keywords: ["AI Engineer", "ML Engineer", "Next.js", "Portfolio", "Framer Motion", "GenAI", "NLP"],
+  description: "Murali Manohar G moved from running an Amazon delivery hub to building AI systems. Portfolio of NLP, GenAI, and automation work.",
+  keywords: ["AI Engineer", "ML Engineer", "Next.js", "Portfolio", "GenAI", "NLP"],
 };
 
 export default function RootLayout({
@@ -27,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans bg-black`}
+        className={`${display.variable} ${body.variable} ${accent.variable} antialiased font-sans bg-cream`}
       >
         <CustomCursor />
         {children}
