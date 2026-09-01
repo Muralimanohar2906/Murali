@@ -55,7 +55,6 @@ const Hero = () => {
               src="/profile.jpg"
               alt="Murali Manohar G"
               className="w-full h-full object-cover"
-              style={{ filter: 'grayscale(1) contrast(1.05)' }}
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000';
               }}
